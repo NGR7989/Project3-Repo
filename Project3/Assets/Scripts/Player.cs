@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [Header("Movement")]
     [Tooltip("The pause between each looped movement")]
     [SerializeField] float pauseForHoldDownTime;
-    [SerializeField] int distancePerMove;
+    [SerializeField] float distancePerMove;
     [Header("Collision")]
     [SerializeField] float checkOffset;
     [SerializeField] float checkRadius;
