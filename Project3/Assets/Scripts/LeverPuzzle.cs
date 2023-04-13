@@ -8,6 +8,8 @@ public class LeverPuzzle : MonoBehaviour
     [SerializeField] List<Lever> levers;
     [SerializeField] int rows, columns;
 
+    bool solved = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +54,58 @@ public class LeverPuzzle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Check for lever flips and flip adjacent levers
+        for (int i = 0; i < levers.Count; i++)
+        {
+            if (levers[i].wasFlipped)
+            {
+                // Recet lever flip
+                levers[i].wasFlipped = false;
+
+                // Get adjacent lever indecies
+                int tLever, rLever, bLever, lLever;
+
+                tLever = i - columns;
+                rLever = i + 1;
+                bLever = i + columns;
+                lLever = i - 1;
+
+                // Check to see if there is a top lever
+                if (tLever >= 0 && tLever < levers.Count)
+                {
+                    levers[tLever].FlipLever();
+                }
+                // Check to see if there is a right lever
+                if ((rLever >= 0 && rLever < levers.Count) && i % columns != columns - 1)
+                {
+                    levers[rLever].FlipLever();
+                }
+                // Check to see if there is a bottom lever
+                if (bLever >= 0 && bLever < levers.Count)
+                {
+                    levers[bLever].FlipLever();
+                }
+                // Check to see if there is a left lever
+                if ((lLever >= 0 && lLever < levers.Count) && i % columns != 0)
+                {
+                    levers[lLever].FlipLever();
+                }
+            }
+        }
+
+        // Open door if solved
+        print(IsSolved());
+    }
+
+    bool IsSolved()
+    {
+        int numCorrect = 0;
+
+        foreach (Lever l in levers)
+        {
+            if (l.IsCorrect()) numCorrect++;
+        }
+
+        return numCorrect == levers.Count;
     }
 }

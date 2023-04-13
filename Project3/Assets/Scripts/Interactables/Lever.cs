@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class Lever : Interactable
 {
-    [Header("Sprite Info")]
+    [Header("Sprite Info")] 
     [SerializeField] Sprite leverOff, leverOn;
     [SerializeField] SpriteRenderer leverRndr;
 
-    private Sprite player;
     bool on = false;
+    public bool wasFlipped;
 
     /// <summary>
     /// Set up the lever
     /// </summary>
     void Start()
     {
-        // Get reference to player
-        player = GameObject.FindObjectOfType<Player>().GetComponent<Sprite>();
-
         // Make the sprite match the starting state
         if (on) leverRndr.sprite = leverOn;
         else leverRndr.sprite = leverOff;
@@ -29,9 +26,8 @@ public class Lever : Interactable
         // Test code
         print("Interacting with - " + this.name);
 
-        // Flip the lever if the player is colliding with it
-        //if (IsColliding())
-        //    FlipLever();
+        FlipLever();
+        wasFlipped = true;
     }
 
     public void FlipLever()
@@ -42,41 +38,19 @@ public class Lever : Interactable
             // Flip the lever off
             on = false;
             leverRndr.sprite = leverOff;
+            leverRndr.color = Color.white;
         }
         else
         {
             // Flip the lever on
             on = true;
             leverRndr.sprite = leverOn;
+            leverRndr.color = Color.green;
         }
     }
 
     public bool IsCorrect()
     {
         return on;
-    }
-
-    private bool IsColliding()
-    {
-        float pMinX, pMaxX, pMinY, pMaxY;
-        float lMinX, lMaxX, lMinY, lMaxY;
-
-        // Get player bounds
-        pMinX = player.bounds.min.x;
-        pMaxX = player.bounds.max.x;
-        pMinY = player.bounds.min.y;
-        pMaxY = player.bounds.max.y;
-
-        // GYt the lever bounds
-        lMinX = GetComponent<Sprite>().bounds.min.x;
-        lMaxX = GetComponent<Sprite>().bounds.max.x;
-        lMinY = GetComponent<Sprite>().bounds.min.y;
-        lMaxY = GetComponent<Sprite>().bounds.max.y;
-
-        // CYeck for collision
-        if ((lMaxX > pMinX) && (pMaxX > lMinX) && (lMaxY > pMinY) && (pMaxY > lMinY))
-            return true;
-        else
-            return false;
     }
 }
