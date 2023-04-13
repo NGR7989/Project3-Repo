@@ -13,13 +13,18 @@ public class Player : MonoBehaviour
     [SerializeField] float checkRadius;
     [Header("Interaction")]
     [SerializeField] KeyCode interactionKey;
+    [SerializeField] LayerMask interactionLayer;
 
     private Vector3 currentDir = Vector3.zero;
     private Vector3 interactionDir = Vector3.down; // For interaction 
 
+    public bool CanMove { get; set; }
+
     // Start is called before the first frame update
     void Start()
     {
+        CanMove = true;
+
         // Begin movement coroutines 
         StartCoroutine(MoveDir(Vector3.up, KeyCode.W));
         StartCoroutine(MoveDir(Vector3.down, KeyCode.S));
@@ -46,6 +51,11 @@ public class Player : MonoBehaviour
 
         while(true)
         {
+            if(!CanMove)
+            {
+                yield return null;
+            }
+
             if(Input.GetKeyDown(key))
             {
                 currentDir = dir;
@@ -119,13 +129,18 @@ public class Player : MonoBehaviour
     /// </summary>
     private void Interaction()
     {
+        if (!CanMove)
+        {
+            return;
+        }
+
         if(Input.GetKeyDown(interactionKey))
         {
             // Try for collision which is interactable 
-            if(IsColliding(interactionDir))
+            if(IsColliding(interactionDir * checkOffset))
             {
                 // Try to get interactable 
-                Interactable interactable = GetInteractable(interactionDir);
+                Interactable interactable = GetInteractable(interactionDir * checkOffset);
 
                 if(interactable != null)
                 {
@@ -155,7 +170,7 @@ public class Player : MonoBehaviour
     /// <returns></returns>
     private Interactable GetInteractable(Vector2 offset)
     {
-        Collider2D collider = Physics2D.OverlapCircle((Vector2)this.transform.position + offset, checkRadius);
+        Collider2D collider = Physics2D.OverlapCircle((Vector2)this.transform.position + offset, checkRadius, interactionLayer);
         return collider == null ? null : collider.GetComponent<Interactable>();
     }
 

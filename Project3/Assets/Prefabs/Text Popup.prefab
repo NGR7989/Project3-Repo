@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 320700350990843368}
   - component: {fileID: 320700350990843374}
   - component: {fileID: 320700350990843375}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text Popup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,4 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cc279f906d7f9458c77dc07efde012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: This is a test
+  text: []

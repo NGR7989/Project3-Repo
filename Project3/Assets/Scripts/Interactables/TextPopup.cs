@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class TextPopup : Interactable
 {
-    [SerializeField] string text;
+    [SerializeField] List<string> text;
+
+    private DialogueManager dm;
+
+    private void Start()
+    {
+        dm = GameObject.FindObjectOfType<DialogueManager>();
+        print(dm);
+    }
 
     public override void Interact()
     {
-        print(text);
+        dm.TryRun(text);
+        print("trrying to run");
     }
 }
