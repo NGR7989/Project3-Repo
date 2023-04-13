@@ -8,8 +8,6 @@ public class LeverPuzzle : MonoBehaviour
     [SerializeField] List<Lever> levers;
     [SerializeField] int rows, columns;
 
-    bool solved = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -62,42 +60,47 @@ public class LeverPuzzle : MonoBehaviour
                 // Recet lever flip
                 levers[i].wasFlipped = false;
 
-                // Get adjacent lever indecies
-                int tLever, rLever, bLever, lLever;
-
-                tLever = i - columns;
-                rLever = i + 1;
-                bLever = i + columns;
-                lLever = i - 1;
-
-                // Check to see if there is a top lever
-                if (tLever >= 0 && tLever < levers.Count)
-                {
-                    levers[tLever].FlipLever();
-                }
-                // Check to see if there is a right lever
-                if ((rLever >= 0 && rLever < levers.Count) && i % columns != columns - 1)
-                {
-                    levers[rLever].FlipLever();
-                }
-                // Check to see if there is a bottom lever
-                if (bLever >= 0 && bLever < levers.Count)
-                {
-                    levers[bLever].FlipLever();
-                }
-                // Check to see if there is a left lever
-                if ((lLever >= 0 && lLever < levers.Count) && i % columns != 0)
-                {
-                    levers[lLever].FlipLever();
-                }
+                FlipAdjacentLevers(i);
             }
         }
 
         // Open door if solved
-        print(IsSolved());
+        //print(IsSolved());
     }
 
-    bool IsSolved()
+    void FlipAdjacentLevers(int index)
+    {
+        // Get adjacent lever indecies
+        int tLever, rLever, bLever, lLever;
+
+        tLever = index - columns;
+        rLever = index + 1;
+        bLever = index + columns;
+        lLever = index - 1;
+
+        // Check to see if there is a top lever
+        if (tLever >= 0 && tLever < levers.Count)
+        {
+            levers[tLever].FlipLever();
+        }
+        // Check to see if there is a right lever
+        if ((rLever >= 0 && rLever < levers.Count) && index % columns != columns - 1)
+        {
+            levers[rLever].FlipLever();
+        }
+        // Check to see if there is a bottom lever
+        if (bLever >= 0 && bLever < levers.Count)
+        {
+            levers[bLever].FlipLever();
+        }
+        // Check to see if there is a left lever
+        if ((lLever >= 0 && lLever < levers.Count) && index % columns != 0)
+        {
+            levers[lLever].FlipLever();
+        }
+    }
+
+    public bool IsSolved()
     {
         int numCorrect = 0;
 

@@ -23,9 +23,7 @@ public class Lever : Interactable
 
     public override void Interact()
     {
-        // Test code
-        print("Interacting with - " + this.name);
-
+        // Flip the lever and show that it was flipped
         FlipLever();
         wasFlipped = true;
     }
