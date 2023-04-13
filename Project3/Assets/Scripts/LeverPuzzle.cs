@@ -52,6 +52,63 @@ public class LeverPuzzle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Check for lever flips and flip adjacent levers
+        for (int i = 0; i < levers.Count; i++)
+        {
+            if (levers[i].wasFlipped)
+            {
+                // Recet lever flip
+                levers[i].wasFlipped = false;
+
+                FlipAdjacentLevers(i);
+            }
+        }
+
+        // Open door if solved
+        //print(IsSolved());
+    }
+
+    void FlipAdjacentLevers(int index)
+    {
+        // Get adjacent lever indecies
+        int tLever, rLever, bLever, lLever;
+
+        tLever = index - columns;
+        rLever = index + 1;
+        bLever = index + columns;
+        lLever = index - 1;
+
+        // Check to see if there is a top lever
+        if (tLever >= 0 && tLever < levers.Count)
+        {
+            levers[tLever].FlipLever();
+        }
+        // Check to see if there is a right lever
+        if ((rLever >= 0 && rLever < levers.Count) && index % columns != columns - 1)
+        {
+            levers[rLever].FlipLever();
+        }
+        // Check to see if there is a bottom lever
+        if (bLever >= 0 && bLever < levers.Count)
+        {
+            levers[bLever].FlipLever();
+        }
+        // Check to see if there is a left lever
+        if ((lLever >= 0 && lLever < levers.Count) && index % columns != 0)
+        {
+            levers[lLever].FlipLever();
+        }
+    }
+
+    public bool IsSolved()
+    {
+        int numCorrect = 0;
+
+        foreach (Lever l in levers)
+        {
+            if (l.IsCorrect()) numCorrect++;
+        }
+
+        return numCorrect == levers.Count;
     }
 }

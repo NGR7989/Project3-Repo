@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lever : MonoBehaviour
+public class Lever : Interactable
 {
-    [Header("Sprite Info")]
+    [Header("Sprite Info")] 
     [SerializeField] Sprite leverOff, leverOn;
     [SerializeField] SpriteRenderer leverRndr;
 
     bool on = false;
+    public bool wasFlipped;
 
     /// <summary>
     /// Set up the lever
@@ -20,6 +21,13 @@ public class Lever : MonoBehaviour
         else leverRndr.sprite = leverOff;
     }
 
+    public override void Interact()
+    {
+        // Flip the lever and show that it was flipped
+        FlipLever();
+        wasFlipped = true;
+    }
+
     public void FlipLever()
     {
         // Check if the lever is on or not
@@ -28,12 +36,14 @@ public class Lever : MonoBehaviour
             // Flip the lever off
             on = false;
             leverRndr.sprite = leverOff;
+            leverRndr.color = Color.white;
         }
         else
         {
             // Flip the lever on
             on = true;
             leverRndr.sprite = leverOn;
+            leverRndr.color = Color.green;
         }
     }
 
