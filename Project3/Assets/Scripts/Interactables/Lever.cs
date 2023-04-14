@@ -6,10 +6,11 @@ public class Lever : Interactable
 {
     [Header("Sprite Info")] 
     [SerializeField] Sprite leverOff, leverOn;
-    [SerializeField] SpriteRenderer leverRndr;
+    [SerializeField] public SpriteRenderer leverRndr;
 
     bool on = false;
     public bool wasFlipped;
+    public bool active = true;
 
     /// <summary>
     /// Set up the lever
@@ -23,9 +24,11 @@ public class Lever : Interactable
 
     public override void Interact()
     {
-        // Flip the lever and show that it was flipped
-        FlipLever();
-        wasFlipped = true;
+        if (active) {
+            // Flip the lever and show that it was flipped
+            FlipLever();
+            wasFlipped = true;
+        }
     }
 
     public void FlipLever()
