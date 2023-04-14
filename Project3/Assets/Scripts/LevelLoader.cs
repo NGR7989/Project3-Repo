@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] List<GameObject> levels;
+    [SerializeField] GameObject player;
     int currentLvl;
 
     /// <summary>
@@ -50,6 +51,9 @@ public class LevelLoader : MonoBehaviour
         // Activate the specified level
         currentLvl = lvlNum;
         levels[currentLvl].SetActive(true);
+
+        // Reset player position
+        player.transform.position = new vector3(zero);
     }
 
     /// <summary>
@@ -71,5 +75,8 @@ public class LevelLoader : MonoBehaviour
         // Activate the next level
         currentLvl++;
         levels[currentLvl].SetActive(true);
+
+        // Reset player position
+        player.transform.position = new vector3(zero);
     }
 }
