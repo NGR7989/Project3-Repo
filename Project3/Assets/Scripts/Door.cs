@@ -9,13 +9,21 @@ public class Door : TextPopup
     [SerializeField] Color lockedColor;
     [SerializeField] SpriteRenderer renderer;
 
+    private LevelLoader levelLoader;
+
     private bool unlocked = false;
+
+    private void Awake()
+    {
+        levelLoader = GameObject.FindObjectOfType<LevelLoader>();
+    }
 
     public override void Interact()
     {
         if(unlocked)
         {
             // Load next room 
+            levelLoader.LoadNextLevel();
         }
         else
         {
