@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TextPopup : Interactable
 {
-    [SerializeField] List<string> text;
+    [SerializeField] protected List<string> text;
 
     private DialogueManager dm;
 
