@@ -8,6 +8,9 @@ public class LeverPuzzle : MonoBehaviour
     [SerializeField] List<Lever> levers;
     [SerializeField] int rows, columns;
 
+    [Header("Room Objects")]
+    [SerializeField] Door door;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +69,15 @@ public class LeverPuzzle : MonoBehaviour
 
         // Open door if solved
         //print(IsSolved());
+        if (IsSolved()) 
+        {
+            door.Unlock();
+            //this.gameObject.SetActive(false);
+            foreach (Lever l in levers) {
+                l.active = false;
+                l.leverRndr.color = Color.gray;
+            }
+        }
     }
 
     void FlipAdjacentLevers(int index)
