@@ -24,7 +24,6 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
-        print("Running");
         StartCoroutine(RunText(text));
     }
 
@@ -73,7 +72,6 @@ public class DialogueManager : MonoBehaviour
                 // Loops until next key 
                 if (Input.GetKeyUp(nextKey))
                 {
-                    print("Key up");
                     // Only continues once key is back up 
                     break;
                 }

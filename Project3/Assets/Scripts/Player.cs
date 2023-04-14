@@ -51,53 +51,54 @@ public class Player : MonoBehaviour
 
         while(true)
         {
-            if(!CanMove)
+            if(CanMove)
             {
-                yield return null;
-            }
-
-            if(Input.GetKeyDown(key))
-            {
-                currentDir = dir;
-                interactionDir = dir;
-
-                // Check before moving 
-                if (!IsColliding(dir * distancePerMove))
+                if (Input.GetKeyDown(key))
                 {
-                    this.transform.position += dir * distancePerMove;
-                }
-            }
-
-            if(Input.GetKey(key) && currentDir.Equals(dir))
-            {
-                // Repeat while the same direction 
-                holdDownTime += Time.deltaTime;
-
-                if(holdDownTime >= pauseForHoldDownTime)
-                {
-                    holdDownTime = 0;
+                    currentDir = dir;
+                    interactionDir = dir;
 
                     // Check before moving 
-                    if(!IsColliding(dir * distancePerMove))
+                    if (!IsColliding(dir * distancePerMove))
                     {
                         this.transform.position += dir * distancePerMove;
                     }
                 }
-            }
-            else if(Input.GetKeyUp(key))
-            {
-                holdDownTime = 0;
 
-                if(currentDir.Equals(dir))
+                if (Input.GetKey(key) && currentDir.Equals(dir))
                 {
-                    // Resets if no other key is pressed 
-                    currentDir = Vector3.zero;
+                    // Repeat while the same direction 
+                    holdDownTime += Time.deltaTime;
+
+                    if (holdDownTime >= pauseForHoldDownTime)
+                    {
+                        holdDownTime = 0;
+
+                        // Check before moving 
+                        if (!IsColliding(dir * distancePerMove))
+                        {
+                            this.transform.position += dir * distancePerMove;
+                        }
+                    }
                 }
+                else if (Input.GetKeyUp(key))
+                {
+                    holdDownTime = 0;
+
+                    if (currentDir.Equals(dir))
+                    {
+                        // Resets if no other key is pressed 
+                        currentDir = Vector3.zero;
+                    }
+                }
+                else
+                {
+                    holdDownTime = 0;
+                }
+
             }
-            else
-            {
-                holdDownTime = 0;
-            }
+
+            
 
             yield return null;
         }
