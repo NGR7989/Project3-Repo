@@ -53,7 +53,7 @@ public class LevelLoader : MonoBehaviour
         levels[currentLvl].SetActive(true);
 
         // Reset player position
-        player.transform.position = new vector3(zero);
+        player.transform.position.Set(0, 0, 0);
     }
 
     /// <summary>
@@ -77,6 +77,6 @@ public class LevelLoader : MonoBehaviour
         levels[currentLvl].SetActive(true);
 
         // Reset player position
-        player.transform.position = new vector3(zero);
+        player.transform.position.Set(0, 0, 0);
     }
 }
