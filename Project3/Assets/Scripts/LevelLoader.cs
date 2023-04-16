@@ -53,7 +53,8 @@ public class LevelLoader : MonoBehaviour
         levels[currentLvl].SetActive(true);
 
         // Reset player position
-        player.transform.position.Set(0, 0, 0);
+        player.transform.position = new Vector3(0, 0, 0);
+        print("Moved Player to " + player.transform.position);
     }
 
     /// <summary>
@@ -77,6 +78,7 @@ public class LevelLoader : MonoBehaviour
         levels[currentLvl].SetActive(true);
 
         // Reset player position
-        player.transform.position.Set(0, 0, 0);
+        player.transform.position = new Vector3(0, 0, 0);
+        print("Moved Player to " + player.transform.position);
     }
 }
