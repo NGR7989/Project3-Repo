@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private Vector3 interactionDir = Vector3.down; // For interaction 
 
     public bool CanMove { get; set; }
+    public Vector3 InteractionDir { get { return interactionDir; } }
 
     // Start is called before the first frame update
     void Start()

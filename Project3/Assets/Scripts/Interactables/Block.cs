@@ -7,17 +7,17 @@ public class Block : Interactable
     [SerializeField] int distancePerMove;
     [SerializeField] float checkRadius;
 
-    private Transform player;
+    private Player player;
 
     private void Start()
     {
-        player = GameObject.FindObjectOfType<Player>().transform;
+        player = GameObject.FindObjectOfType<Player>();
     }
 
     public override void Interact()
     {
         // When interacted with this object is attempted to be moved
-        Vector3 newPos = (this.transform.position - player.position).normalized * distancePerMove;
+        Vector3 newPos = player.InteractionDir * distancePerMove;
 
         if(!IsColliding(newPos))
         {
