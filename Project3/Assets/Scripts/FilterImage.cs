@@ -12,7 +12,14 @@ public class FilterImage : MonoBehaviour
     [SerializeField] float disappearSpeed;
     [SerializeField] AnimationCurve disappearCurve;
     private bool active;
-    
+
+    public bool Active { get { return active; } }
+
+    private void Start()
+    {
+        TryDisappear();
+    }
+
     /// <summary>
     /// Try to make image appear if not already animating 
     /// </summary>

@@ -6,6 +6,8 @@ public class LevelLoader : MonoBehaviour
 {
     [SerializeField] List<GameObject> levels;
     [SerializeField] GameObject player;
+    [SerializeField] FilterImage filterImage;
+    [SerializeField] float staticTime;
     int currentLvl;
 
     /// <summary>
@@ -22,6 +24,14 @@ public class LevelLoader : MonoBehaviour
         // Activate the first level
         currentLvl = 0;
         levels[currentLvl].SetActive(true);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            LoadLevel(currentLvl);
+        }
     }
 
     /// <summary>
@@ -45,16 +55,8 @@ public class LevelLoader : MonoBehaviour
             return;
         }
 
-        // Deactivate the current level
-        levels[currentLvl].SetActive(false);
-
-        // Activate the specified level
-        currentLvl = lvlNum;
-        levels[currentLvl].SetActive(true);
-
-        // Reset player position
-        player.transform.position = new Vector3(0, 0, 0);
-        print("Moved Player to " + player.transform.position);
+        StartCoroutine(LoadAfterPause(lvlNum));
+        //LoadLevelUnsafe(currentLvl);
     }
 
     /// <summary>
@@ -70,12 +72,48 @@ public class LevelLoader : MonoBehaviour
             return;
         }
 
+        StartCoroutine(LoadAfterPause(currentLvl + 1));
+        //LoadLevelUnsafe(currentLvl + 1);
+    }
+
+    private IEnumerator LoadAfterPause(int levelToLoad)
+    {
+        // Make static appear 
+        filterImage.TryAppear();
+
+        // Loop until rendered 
+        while (true)
+        {
+            if(!filterImage.Active)
+            {
+                break;
+            }
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(staticTime);
+        LoadLevelUnsafe(levelToLoad);
+        filterImage.TryDisappear();
+
+        /*// Loop until gone 
+        while (true)
+        {
+            if (!filterImage.Active)
+            {
+                break;
+            }
+            yield return null;
+        }*/
+    }
+
+    private void LoadLevelUnsafe(int levelToLoad)
+    {
         // Deactiveate the current level
         levels[currentLvl].SetActive(false);
 
         // Activate the next level
-        currentLvl++;
-        levels[currentLvl].SetActive(true);
+        levels[levelToLoad].SetActive(true);
+        currentLvl = levelToLoad;
 
         // Reset player position
         player.transform.position = new Vector3(0, 0, 0);
