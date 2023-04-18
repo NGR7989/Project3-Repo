@@ -8,6 +8,8 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] FilterImage filterImage;
     [SerializeField] float staticTime;
+
+    private List<GameObject> levelObjHold;
     int currentLvl;
 
     /// <summary>
@@ -15,10 +17,15 @@ public class LevelLoader : MonoBehaviour
     /// </summary>
     void Start()
     {
+        levelObjHold = new List<GameObject>();
+
         // Make sure all levels are inactive to start
         foreach (GameObject level in levels)
         {
             level.SetActive(false);
+
+            GameObject hold = Instantiate(level, level.transform.position, Quaternion.identity);
+            levelObjHold.Add(hold);
         }
 
         // Activate the first level
@@ -30,7 +37,7 @@ public class LevelLoader : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
-            LoadLevel(currentLvl);
+            ReloadLvevl();
         }
     }
 
@@ -76,6 +83,14 @@ public class LevelLoader : MonoBehaviour
         //LoadLevelUnsafe(currentLvl + 1);
     }
 
+    /// <summary>
+    /// Reloads the currently active level
+    /// </summary>
+    private void ReloadLvevl()
+    {
+        StartCoroutine(ReloadCo());
+    }
+
     private IEnumerator LoadAfterPause(int levelToLoad)
     {
         // Make static appear 
@@ -104,6 +119,34 @@ public class LevelLoader : MonoBehaviour
             }
             yield return null;
         }*/
+    }
+
+    private IEnumerator ReloadCo()
+    {
+        // Make static appear 
+        filterImage.TryAppear();
+
+        // Loop until rendered 
+        while (true)
+        {
+            if (!filterImage.Active)
+            {
+                break;
+            }
+            yield return null;
+        }
+
+        // Replace the current level with a copy
+        // with how it was started 
+        GameObject toDestroy = levels[currentLvl];
+        levels[currentLvl] = Instantiate(levelObjHold[currentLvl], toDestroy.transform.position, Quaternion.identity);
+        levels[currentLvl].SetActive(true);
+        Destroy(toDestroy);
+
+        yield return new WaitForSeconds(staticTime);
+
+        filterImage.TryDisappear();
+
     }
 
     private void LoadLevelUnsafe(int levelToLoad)

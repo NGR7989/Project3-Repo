@@ -9,9 +9,10 @@ public class Door : TextPopup
     [SerializeField] Color lockedColor;
     [SerializeField] SpriteRenderer renderer;
 
+
     private LevelLoader levelLoader;
 
-    private bool unlocked = false;
+    [SerializeField] bool unlocked = false;
 
     private void Awake()
     {

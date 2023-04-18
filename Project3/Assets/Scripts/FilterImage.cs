@@ -11,6 +11,10 @@ public class FilterImage : MonoBehaviour
     [SerializeField] AnimationCurve appearCurve;
     [SerializeField] float disappearSpeed;
     [SerializeField] AnimationCurve disappearCurve;
+    [Header("Audio")]
+    [SerializeField] AudioSource source;
+    [SerializeField] float volumeMax;
+    [SerializeField] float volumeMin;
     private bool active;
 
     public bool Active { get { return active; } }
@@ -60,6 +64,8 @@ public class FilterImage : MonoBehaviour
         {
             image.color = Color.Lerp(Color.clear, Color.white, appearCurve.Evaluate(lerp));
 
+            source.volume = Mathf.Lerp(volumeMin, volumeMax, lerp);
+
             lerp += Time.deltaTime * appearSpeed;
             yield return null;
         }
@@ -78,6 +84,8 @@ public class FilterImage : MonoBehaviour
         while (lerp <= 1)
         {
             image.color = Color.Lerp(Color.white, Color.clear, disappearCurve.Evaluate(lerp));
+
+            source.volume = Mathf.Lerp(volumeMax, volumeMin, lerp);
 
             lerp += Time.deltaTime * disappearSpeed;
             yield return null;

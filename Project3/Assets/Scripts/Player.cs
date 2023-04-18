@@ -14,6 +14,10 @@ public class Player : MonoBehaviour
     [Header("Interaction")]
     [SerializeField] KeyCode interactionKey;
     [SerializeField] LayerMask interactionLayer;
+    [Header("Audio")]
+    [SerializeField] AudioClip walkStart;
+    [SerializeField] AudioClip walkContinue;
+    private SoundManager soundManager;
 
     private Vector3 currentDir = Vector3.zero;
     private Vector3 interactionDir = Vector3.down; // For interaction 
@@ -24,6 +28,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = GameObject.FindObjectOfType<SoundManager>();
+
         CanMove = true;
 
         // Begin movement coroutines 
@@ -63,6 +69,7 @@ public class Player : MonoBehaviour
                     if (!IsColliding(dir * distancePerMove))
                     {
                         this.transform.position += dir * distancePerMove;
+                        soundManager.TryPlaySound("walk", walkStart);
                     }
                 }
 
@@ -79,6 +86,7 @@ public class Player : MonoBehaviour
                         if (!IsColliding(dir * distancePerMove))
                         {
                             this.transform.position += dir * distancePerMove;
+                            soundManager.TryPlaySound("walk", walkContinue);
                         }
                     }
                 }
