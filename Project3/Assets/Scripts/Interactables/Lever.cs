@@ -8,9 +8,14 @@ public class Lever : Interactable
     [SerializeField] Sprite leverOff, leverOn;
     [SerializeField] public SpriteRenderer leverRndr;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip activateLever;
+
     bool on = false;
     public bool wasFlipped;
     public bool active = true;
+
+    private SoundManager soundManager;
 
     /// <summary>
     /// Set up the lever
@@ -20,6 +25,8 @@ public class Lever : Interactable
         // Make the sprite match the starting state
         if (on) leverRndr.sprite = leverOn;
         else leverRndr.sprite = leverOff;
+
+        soundManager = GameObject.FindObjectOfType<SoundManager>();
     }
 
     public override void Interact()
@@ -28,6 +35,7 @@ public class Lever : Interactable
             // Flip the lever and show that it was flipped
             FlipLever();
             wasFlipped = true;
+            soundManager.TryPlaySound("lever", activateLever, 0.9f, 1.1f);
         }
     }
 

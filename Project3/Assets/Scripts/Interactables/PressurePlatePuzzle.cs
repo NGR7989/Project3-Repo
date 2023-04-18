@@ -7,6 +7,9 @@ public class PressurePlatePuzzle : MonoBehaviour
     [SerializeField] List<PressurePlate> plates;
     [SerializeField] Door door;
 
+    /*[Header("Audio")]
+    [SerializeField] AudioClip pressedClip;*/
+
     private void Update()
     {
         bool allActive = true;

@@ -7,11 +7,17 @@ public class Block : Interactable
     [SerializeField] int distancePerMove;
     [SerializeField] float checkRadius;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip moveClip;
+    [SerializeField] float pitchMin, pitchMax;
+
     private Player player;
+    private SoundManager soundManager;
 
     private void Start()
     {
         player = GameObject.FindObjectOfType<Player>();
+        soundManager = GameObject.FindObjectOfType<SoundManager>();
     }
 
     public override void Interact()
@@ -23,6 +29,7 @@ public class Block : Interactable
         {
             // Moves forward if possible 
             this.transform.position += newPos;
+            soundManager.TryPlaySound("block", moveClip, pitchMin, pitchMax);
         }
     }
 

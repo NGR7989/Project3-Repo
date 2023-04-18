@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip walkStart;
     [SerializeField] AudioClip walkContinue;
+    [SerializeField] float walkPitchMin, walkPitchMax;
     private SoundManager soundManager;
 
     private Vector3 currentDir = Vector3.zero;
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour
                     if (!IsColliding(dir * distancePerMove))
                     {
                         this.transform.position += dir * distancePerMove;
-                        soundManager.TryPlaySound("walk", walkStart);
+                        soundManager.TryPlaySound("walk start", walkStart, walkPitchMin, walkPitchMax);
                     }
                 }
 
@@ -86,7 +87,7 @@ public class Player : MonoBehaviour
                         if (!IsColliding(dir * distancePerMove))
                         {
                             this.transform.position += dir * distancePerMove;
-                            soundManager.TryPlaySound("walk", walkContinue);
+                            soundManager.TryPlaySound("walk", walkStart, walkPitchMin, walkPitchMax);
                         }
                     }
                 }

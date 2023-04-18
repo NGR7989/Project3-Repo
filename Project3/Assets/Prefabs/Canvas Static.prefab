@@ -400,7 +400,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   source: {fileID: 667036193}
-  volumeMax: 0.8
+  volumeMax: 0.1
+  volumeMin: 0.01
 --- !u!82 &667036193
 AudioSource:
   m_ObjectHideFlags: 0
@@ -413,9 +414,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 119d2ff53d37bc64f8f764bcad72bd01, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

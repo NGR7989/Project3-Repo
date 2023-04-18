@@ -158,3 +158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distancePerMove: 1
   checkRadius: 0.4
+  moveClip: {fileID: 8300000, guid: 9a82e067759cdc6488920d039dd54093, type: 3}
+  pitchMin: 0.9
+  pitchMax: 1

@@ -9,14 +9,20 @@ public class Door : TextPopup
     [SerializeField] Color lockedColor;
     [SerializeField] SpriteRenderer renderer;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip lockedClip;
+    [SerializeField] AudioClip unlockedClip;
+
 
     private LevelLoader levelLoader;
+    private SoundManager soundManager;
 
     [SerializeField] bool unlocked = false;
 
     private void Awake()
     {
         levelLoader = GameObject.FindObjectOfType<LevelLoader>();
+        soundManager = GameObject.FindObjectOfType<SoundManager>();
     }
 
     public override void Interact()
@@ -30,6 +36,7 @@ public class Door : TextPopup
         {
             // Runs popup text 
             base.Interact();
+            soundManager.TryPlaySound("door", lockedClip, 1, 1);
         }
     }
 
@@ -39,6 +46,7 @@ public class Door : TextPopup
     public void Unlock()
     {
         unlocked = true;
+        soundManager.TryPlaySound("door", unlockedClip, 1, 1);
 
         // Play the audio to unlock
     }
