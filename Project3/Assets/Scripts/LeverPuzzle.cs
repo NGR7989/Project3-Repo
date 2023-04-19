@@ -35,21 +35,25 @@ public class LeverPuzzle : MonoBehaviour
                 + "\n" + levers.Count + " Levers");
         }
 
-        // Randomize lever starting points
-        for (int y = 0; y < rows; y++)
-        {
-            for (int x = 0; x < columns; x++)
-            {
-                if (Random.Range(0, 2) == 1)
-                {
-                    levers[(y * columns) + x].FlipLever();
-                    print("Lever On");
-                }
-                else print("Lever Off");
-            }
-        }
 
-        
+        /*
+         * Test out starting with all the levers off to decrease the challenge of the puzzle.
+         * If that doesnt work just uncomment the loop below
+         */
+        //// Make sure levers don't start solved
+        //do
+        //{
+        //    // Randomize lever starting points
+        //    for (int i = 0; i < levers.Count; i++)
+        //    {
+        //        if (Random.Range(0, 2) == 1)
+        //        {
+        //            levers[i].FlipLever();
+        //            //print("Lever On");
+        //        }
+        //        //else print("Lever Off");
+        //    }
+        //} while (IsSolved());
     }
 
     // Update is called once per frame
