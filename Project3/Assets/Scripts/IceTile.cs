@@ -13,14 +13,15 @@ public class IceTile : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindObjectOfType<Player>();
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+        print((player.transform.position - this.transform.position).sqrMagnitude <= 0.01f);
         if (player.transform.position.Equals(this.transform.position))
         {
+            print("Equal");
             Vector3 checkPos = player.transform.position + player.InteractionDir * slideDis;
             if(Physics2D.OverlapCircle(checkPos, radiusCheck) == null)
             {
