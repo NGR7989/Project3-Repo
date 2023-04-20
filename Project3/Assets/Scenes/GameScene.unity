@@ -1648,7 +1648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text:
   - A table full of ramblings
-  - '"Get him here get him get him here..."'
+  - '"He must SUFFER he must SUFFER he must SUFFER he must SUFFER"'
 --- !u!61 &603737818
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1742,7 +1742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &607129557
 Transform:
   m_ObjectHideFlags: 0
@@ -2134,8 +2134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text:
-  - A table full of ramblings
-  - '"Get him here get him get him here..."'
+  - There is a table. You peer underneath and see a body.
+  - The body has it's stomach slashed open and it's face is hacked beyond recognition.
 --- !u!61 &819217228
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2688,7 +2688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text:
   - A table full of ramblings
-  - '"Get him here get him get him here..."'
+  - '"Rotten MEAT rotten MEAT rotten MEAT rotten MEAT"'
 --- !u!61 &1034054001
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3211,7 +3211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1160141390
 Transform:
   m_ObjectHideFlags: 0
@@ -3889,8 +3889,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text:
-  - A table full of ramblings
-  - '"Get him here get him get him here..."'
+  - A note it etched into the wooden table.
+  - '"You are VERY familiar with the victim Harry"'
 --- !u!61 &1483868095
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6208,7 +6208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text:
   - A table full of ramblings
-  - '"Get him here get him get him here..."'
+  - '"Need him DEAD need him DEAD need him DEAD"'
 --- !u!61 &2106314095
 BoxCollider2D:
   m_ObjectHideFlags: 0
