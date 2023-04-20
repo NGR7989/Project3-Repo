@@ -18,7 +18,7 @@ public class IceTile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print((player.transform.position - this.transform.position).sqrMagnitude <= 0.01f);
+        print((player.transform.position.Equals(this.transform.position)));
         if (player.transform.position.Equals(this.transform.position))
         {
             print("Equal");
