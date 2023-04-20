@@ -137,5 +137,7 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 64
-  walkStart: {fileID: 8300000, guid: fd79448326a43224aad171acff5676db, type: 3}
+  walkStart: {fileID: 8300000, guid: 9ec624058d5995f4fbd46adbc4e20ed1, type: 3}
   walkContinue: {fileID: 8300000, guid: 9ec624058d5995f4fbd46adbc4e20ed1, type: 3}
+  walkPitchMin: 0.8
+  walkPitchMax: 1

@@ -143,6 +143,8 @@ public class LevelLoader : MonoBehaviour
         levels[currentLvl].SetActive(true);
         Destroy(toDestroy);
 
+
+        player.transform.position = new Vector3(0, 0, 0);
         yield return new WaitForSeconds(staticTime);
 
         filterImage.TryDisappear();
