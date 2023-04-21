@@ -4,21 +4,14 @@ using UnityEngine;
 
 public class Spinner : Interactable
 {
-    enum Direction {
-        north = 0,
-        south = 180,
-        east = -90,
-        west = 90
-    }
-
     [Header("Spinner Info")]
     [SerializeField] Direction correctDirection;
-    [SerializeField] SpriteRenderer spriteRndr;
+    [SerializeField] public SpriteRenderer spriteRndr;
 
     [Header("Audio")]
     [SerializeField] AudioClip turnSpinner;
 
-    Direction direction = Direction.north;
+    Direction direction = Direction.North;
     public bool active = true;
 
     private SoundManager soundManager;
@@ -34,13 +27,10 @@ public class Spinner : Interactable
 
     public override void Interact() 
     {
-        print("Spinning " + transform.name);
-        Spin();
-
         if (active)
         {
-            //Spin();
-            //soundManager.TryPlaySound("lever", turnSpinner, 0.9f, 1.1f);
+            Spin();
+            soundManager.TryPlaySound("lever", turnSpinner, 0.9f, 1.1f);
         }
     }
 
@@ -49,25 +39,48 @@ public class Spinner : Interactable
         return direction == correctDirection;
     }
 
+    public void RandomizeDirection()
+    {
+        switch (Random.Range(0, 3))
+        {
+            case 0:
+                direction = Direction.North; 
+                break;
+            case 1:
+                direction = Direction.East;
+                break;
+            case 2:
+                direction = Direction.South;
+                break;
+            default:
+                direction = Direction.West;
+                break;
+        }
+    }
+
     private void UpdateVisual() {
-        transform.eulerAngles += Vector3.forward * (float)direction;
+        transform.eulerAngles = Vector3.forward * (float)direction;
     }
 
     private void Spin()
     {
         switch (direction)
         {
-            case Direction.north:
-                direction = Direction.east;
+            case Direction.North:
+                direction = Direction.East;
+                print("Pointing Right: " + (float)Direction.East);
                 break;
-            case Direction.south:
-                direction = Direction.west;
+            case Direction.South:
+                direction = Direction.West;
+                print("Pointing Left: " + (float)Direction.West);
                 break;
-            case Direction.east:
-                direction = Direction.south;
+            case Direction.East:
+                direction = Direction.South;
+                print("Pointing Down: " + (float)Direction.South);
                 break;
-            case Direction.west:
-                direction = Direction.north;
+            case Direction.West:
+                direction = Direction.North;
+                print("Pointing Up: " + (float)Direction.North);
                 break;
         }
 
