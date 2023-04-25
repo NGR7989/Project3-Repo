@@ -11,6 +11,8 @@ public class DialogueManager : MonoBehaviour
 
     private bool isRunning = false;
 
+    public bool Running { get { return isRunning; } }
+
 
     /// <summary>
     /// Attempt to run dialogue to the screen. If 
