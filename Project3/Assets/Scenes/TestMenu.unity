@@ -1068,7 +1068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &347872377
 Transform:
   m_ObjectHideFlags: 0
@@ -4709,7 +4709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1959119069
 Transform:
   m_ObjectHideFlags: 0
@@ -4985,11 +4985,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'W, A, S, D To Move
+  m_text: '<#0aacf2>W, A, S, D</color> To Move
 
-    E To Interact
+    <#f2d70a>E</color> To Interact
 
-    R to Reset Current Room'
+    <#bf15a9>R</color>
+    to Reset Current Room'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca60eb6712a2d8247a5de1a43c8ecd64, type: 2}
   m_sharedMaterial: {fileID: 445917540258334736, guid: ca60eb6712a2d8247a5de1a43c8ecd64, type: 2}
