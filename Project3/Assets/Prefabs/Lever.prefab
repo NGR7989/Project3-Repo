@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: e2a2af6e6d2eda14096856facc7f39b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 778e2459deab9cb49a9a46392a415249, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leverOff: {fileID: 21300000, guid: e2a2af6e6d2eda14096856facc7f39b0, type: 3}
-  leverOn: {fileID: 21300000, guid: ab8be3a8ab8fe1349b0638e32d5e9c32, type: 3}
+  leverOn: {fileID: 21300000, guid: 778e2459deab9cb49a9a46392a415249, type: 3}
   leverRndr: {fileID: 5313485305617420511}
   activateLever: {fileID: 8300000, guid: 9f4654f97ba9eaa42a439b4ba33657f0, type: 3}
   wasFlipped: 0
@@ -120,8 +120,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.6, y: 0.25}
-    oldSize: {x: 1.5, y: 1.2}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.18, y: 0.18}
     newSize: {x: 1.5, y: 1.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
