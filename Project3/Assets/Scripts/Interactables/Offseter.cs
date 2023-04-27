@@ -22,12 +22,14 @@ public class Offseter : Interactable
     [SerializeField] float delayOnNeighbor;
 
     private Player player;
+    private bool isChanging;
 
-    public bool IsCorrect { get { return currentState == States.green; } }
+    public bool IsCorrect { get { return !isChanging ? currentState == States.green : false; } }
 
     private void Start()
     {
         player = GameObject.FindObjectOfType<Player>();
+        isChanging = false;
 
         SetColor(currentState);
     }
@@ -114,9 +116,12 @@ public class Offseter : Interactable
 
     private IEnumerator ChangeStateOnDelayCo(float delay)
     {
+        isChanging = true;
         yield return new WaitForSeconds(delay);
         TryInteractWithNeighbor();
         ChangeState();
+
+        isChanging = false;
     }
 
     private enum States

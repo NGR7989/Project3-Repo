@@ -7,16 +7,29 @@ public class OffseterPuzzle : MonoBehaviour
 
     [SerializeField] List<Offseter> items;
     [SerializeField] Door door;
+    bool isComplete = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(!isComplete)
+        {
+            bool allGood = true;
+            for (int i = 0; i < items.Count; i++)
+            {
+                if(!items[i].IsCorrect)
+                {
+                    allGood = false;
+                    break;
+                }
+            }
+
+            if (allGood)
+            {
+                isComplete = true;
+                door.Unlock();
+            }
+        }
     }
 }
