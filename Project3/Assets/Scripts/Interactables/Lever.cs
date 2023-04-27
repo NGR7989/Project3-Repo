@@ -16,6 +16,8 @@ public class Lever : Interactable
     public bool active = true;
 
     private SoundManager soundManager;
+    private Vector4 offColor = new Vector4(0.7f, 0.8f, 1f, 1f);
+    private Vector4 onColor = new Vector4(0.5f, 1f, .6f, 1f);
 
     /// <summary>
     /// Set up the lever
@@ -23,8 +25,16 @@ public class Lever : Interactable
     void Start()
     {
         // Make the sprite match the starting state
-        if (on) leverRndr.sprite = leverOn;
-        else leverRndr.sprite = leverOff;
+        if (on)
+        {
+            leverRndr.sprite = leverOn;
+            leverRndr.color = onColor;
+        }
+        else
+        {
+            leverRndr.sprite = leverOff;
+            leverRndr.color = offColor;
+        }
 
         soundManager = GameObject.FindObjectOfType<SoundManager>();
     }
@@ -47,14 +57,14 @@ public class Lever : Interactable
             // Flip the lever off
             on = false;
             leverRndr.sprite = leverOff;
-            leverRndr.color = Color.white;
+            leverRndr.color = offColor;
         }
         else
         {
             // Flip the lever on
             on = true;
             leverRndr.sprite = leverOn;
-            leverRndr.color = Color.green;
+            leverRndr.color = onColor;
         }
     }
 
