@@ -9,6 +9,8 @@ public class Offseter : Interactable
     [SerializeField] float radius;
     [SerializeField] LayerMask layer;
 
+    [SerializeField] SpriteRenderer renderer;
+
     [Header("State Details")]
     [SerializeField] States currentState;
 
@@ -17,14 +19,18 @@ public class Offseter : Interactable
     [SerializeField] Color red;
     [SerializeField] Color green;
     [SerializeField] Color yellow;
+    [SerializeField] float delayOnNeighbor;
 
     private Player player;
+
+    public bool IsCorrect { get { return currentState == States.green; } }
 
     private void Start()
     {
         player = GameObject.FindObjectOfType<Player>();
-    }
 
+        SetColor(currentState);
+    }
 
     public override void Interact()
     {
@@ -45,17 +51,18 @@ public class Offseter : Interactable
         Vector3 dir = player.InteractionDir;
 
         // Check if there is another offseter there 
-        Collider2D col = Physics2D.OverlapCircle(dir * disToInfluence, radius);
+        Collider2D col = Physics2D.OverlapCircle(this.transform.position + dir * disToInfluence, radius, layer);
 
         if(col != null)
         {
             // Something to detect 
             Offseter offseter = col.GetComponent<Offseter>();
-
+            
             if(offseter != null)
             {
                 // Make sure it has the component 
-                offseter.Interact();
+                //offseter.Interact();
+                offseter.ChangeStateOnDelay(delayOnNeighbor);
             }
         }
     }
@@ -68,12 +75,48 @@ public class Offseter : Interactable
         if (currentState == States.yellow)
         {
             // Wrap back around 
-            print(States.red);
+            currentState = States.red;
+            
         }
         else
         {
-            print(currentState + 1);
+            currentState = currentState + 1;
         }
+
+        // Updates the visual 
+        SetColor(currentState);
+    }
+
+    private void SetColor(States state)
+    {
+        Color color = Color.white;
+
+        switch (state)
+        {
+            case States.red:
+                color = red;
+                break;
+            case States.green:
+                color = green;
+                break;
+            case States.yellow:
+                color = yellow;
+                break;
+        }
+
+        renderer.color = color;
+    }
+
+    public void ChangeStateOnDelay(float delay)
+    {
+        StartCoroutine(ChangeStateOnDelayCo(delay));
+    }
+
+    private IEnumerator ChangeStateOnDelayCo(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        TryInteractWithNeighbor();
+        ChangeState();
     }
 
     private enum States
