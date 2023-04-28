@@ -7,6 +7,7 @@ public class OffseterPuzzle : MonoBehaviour
 
     [SerializeField] List<Offseter> items;
     [SerializeField] Door door;
+    [SerializeField] Transform player;
     bool isComplete = false;
 
 
