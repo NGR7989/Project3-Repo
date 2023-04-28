@@ -2170,7 +2170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &607129557
 Transform:
   m_ObjectHideFlags: 0
@@ -4848,6 +4848,18 @@ PrefabInstance:
     - target: {fileID: 2516513842846017564, guid: a923c98d297f39a43a3796fe3fd8289e, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516513842953030806, guid: a923c98d297f39a43a3796fe3fd8289e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516513842953030811, guid: a923c98d297f39a43a3796fe3fd8289e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.26923946
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516513842953030811, guid: a923c98d297f39a43a3796fe3fd8289e, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.019183323
       objectReference: {fileID: 0}
     - target: {fileID: 2516513843291672854, guid: a923c98d297f39a43a3796fe3fd8289e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9931,7 +9943,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.04}
+  m_Offset: {x: 0, y: 0.051464923}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -9942,7 +9954,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.21, y: 0.28}
+  m_Size: {x: 0.21, y: 0.21902345}
   m_EdgeRadius: 0
 --- !u!1001 &918843380438651988
 PrefabInstance:
@@ -11817,7 +11829,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.0164666}
+  m_Offset: {x: 0, y: 1.0379877}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -11828,7 +11840,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 0.9670668}
+  m_Size: {x: 3, y: 0.92402446}
   m_EdgeRadius: 0
 --- !u!212 &918843381080441710
 SpriteRenderer:
@@ -13572,7 +13584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &918843381787080387
 Transform:
   m_ObjectHideFlags: 0
