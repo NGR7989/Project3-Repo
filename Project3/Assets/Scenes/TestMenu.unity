@@ -2185,7 +2185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.01}
   m_SizeDelta: {x: 787.508, y: 385.933}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &667495661
@@ -2211,10 +2211,10 @@ MonoBehaviour:
   m_text: '<#6ea>Narai Risser</color> - Team Lead, Gameplay & Puzzle Programmer
 
     <#9642fc>Trevor
-    Dunn</color> - Narrative Designer
+    Dunn</color> - Narrative Designer, Music Selection
 
-    <#ff0000>Kaelynn Amodia</color> - Sound
-    Designer
+    <#ff0000>Kaelynn Amodia</color>
+    - Sound Designer
 
     <#4287f5>Mark Grimke</color> - Gameplay & Puzzle Programmer
 
