@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] FilterImage filterImage;
     [SerializeField] float staticTime;
+    [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject controlsMenu;
 
     private List<GameObject> levelObjHold;
     int currentLvl;
+    bool isPaused = false;
 
     /// <summary>
     /// Setup all the levels and activate the first one
@@ -35,9 +39,28 @@ public class LevelLoader : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isPaused)
+            {
+                // Pause game
+                pauseMenu.SetActive(true);
+                isPaused = true;
+                player.GetComponent<Player>().CanMove = false;
+            }
+            else
+            {
+                // Unpause game
+                pauseMenu.SetActive(false);
+                controlsMenu.SetActive(false);
+                isPaused = false;
+                player.GetComponent<Player>().CanMove = false;
+            }
+        }
+
         if(Input.GetKeyDown(KeyCode.R) && player.GetComponent<Player>().CanMove)
         {
-            ReloadLvevl();
+            ReloadLevel();
         }
     }
 
@@ -86,7 +109,7 @@ public class LevelLoader : MonoBehaviour
     /// <summary>
     /// Reloads the currently active level
     /// </summary>
-    private void ReloadLvevl()
+    private void ReloadLevel()
     {
         StartCoroutine(ReloadCo());
     }
