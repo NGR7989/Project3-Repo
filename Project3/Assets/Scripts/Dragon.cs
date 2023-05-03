@@ -45,6 +45,7 @@ public class Dragon : TextPopup
         }
 
         StartCoroutine(PhaseOut());
+        soundManager.FadeMusic();
 
         while (counter <= text.Count)
         {

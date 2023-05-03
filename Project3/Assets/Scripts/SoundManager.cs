@@ -94,6 +94,18 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Used to fade out the music 
+    /// </summary>
+    public void FadeMusic()
+    {
+        if (!musicChanging)
+        {
+            musicChanging = true;
+            StartCoroutine(FadeSource(musicSource, musicFadeOutTime));
+        }
+    }
+
     private IEnumerator ChangeMusicTrackCo(int index)
     {
         yield return FadeSource(musicSource, musicFadeOutTime);
