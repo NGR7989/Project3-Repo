@@ -98,9 +98,10 @@ public class SoundManager : MonoBehaviour
     {
         yield return FadeSource(musicSource, musicFadeOutTime);
 
-        musicSource.volume = musicVolume;
         musicSource.clip = musicTracks[index];
         musicSource.Play();
+
+        StartCoroutine(RaiseSource(musicSource, musicFadeOutTime, musicVolume));
     }
 
     /// <summary>
@@ -117,6 +118,19 @@ public class SoundManager : MonoBehaviour
         while(time <= fadeTime)
         {
             source.volume = Mathf.Lerp(startVolume, 0, time / fadeTime);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+    }
+    private IEnumerator RaiseSource(AudioSource source, float fadeTime, float volumeTarget)
+    {
+        float time = 0;
+
+        float startVolume = source.volume;
+        while (time <= fadeTime)
+        {
+            source.volume = Mathf.Lerp(0, volumeTarget, time / fadeTime);
 
             time += Time.deltaTime;
             yield return null;

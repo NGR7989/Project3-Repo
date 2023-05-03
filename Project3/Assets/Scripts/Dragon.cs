@@ -45,6 +45,20 @@ public class Dragon : TextPopup
         }
 
         StartCoroutine(PhaseOut());
+
+        while (counter <= text.Count)
+        {
+            if (Input.GetKeyUp(continueKey))
+            {
+                counter++;
+            }
+
+            yield return null;
+        }
+
+        // End
+        Destroy(this.gameObject);
+        door.SetActive(true);
     }
 
     /// <summary>
@@ -63,9 +77,5 @@ public class Dragon : TextPopup
             lerp += Time.deltaTime * phaseOutSpeed;
             yield return null;
         }
-
-        // End
-        Destroy(this.gameObject);
-        door.SetActive(true);
     }
 }
