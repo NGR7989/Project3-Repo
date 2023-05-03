@@ -147,5 +147,6 @@ public class SoundManager : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
+        musicChanging= false;
     }
 }
