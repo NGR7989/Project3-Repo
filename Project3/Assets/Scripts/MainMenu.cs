@@ -22,10 +22,26 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(PlayAfterTime(time));
     }
 
+    public void Menu(float time)
+    {
+        if (loading)
+        {
+            return;
+        }
+        loading = true;
+        StartCoroutine(MenuAfterTime(time));
+    }
+
     private IEnumerator PlayAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
         SceneManager.LoadScene("GameScene");
+    }
+
+    private IEnumerator MenuAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
@@ -33,4 +49,5 @@ public class MainMenu : MonoBehaviour
         print("Quitting Game");
         Application.Quit();
     }
+
 }

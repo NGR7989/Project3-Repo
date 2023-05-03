@@ -11,7 +11,6 @@ public class TextPopup : Interactable
     private void Start()
     {
         dm = GameObject.FindObjectOfType<DialogueManager>();
-        print(dm);
     }
 
     public override void Interact()
