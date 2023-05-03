@@ -17,6 +17,5 @@ public class TextPopup : Interactable
     public override void Interact()
     {
         dm.TryRun(text);
-        print("trrying to run");
     }
 }

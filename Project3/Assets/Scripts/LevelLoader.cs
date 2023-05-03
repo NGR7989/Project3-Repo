@@ -11,6 +11,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] float staticTime;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject controlsMenu;
+    [SerializeField] SoundManager soundManager;
 
     private List<GameObject> levelObjHold;
     int currentLvl;
@@ -58,6 +59,9 @@ public class LevelLoader : MonoBehaviour
             }
         }
 
+        // So the player does not try to reload during
+        // a time they are reading dialogue or meant
+        // to stay still
         if(Input.GetKeyDown(KeyCode.R) && player.GetComponent<Player>().CanMove)
         {
             ReloadLevel();

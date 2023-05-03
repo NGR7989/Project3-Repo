@@ -1760,6 +1760,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbdf547f908ea724086597372125a9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicTracks:
+  - {fileID: 8300000, guid: 51100e2bf788a3941a2c40b320ca23d6, type: 3}
+  - {fileID: 8300000, guid: 69eb8e4227a6baa429e47c7cf616b6bf, type: 3}
+  musicVolume: 0.1
+  musicFadeOutTime: 1
   soundRef: {fileID: 4442824915502604467, guid: cbe0a57f2532f37458a75a5456590d4a, type: 3}
   soundListMaxSize: 3
 --- !u!1001 &373229630
@@ -1941,6 +1946,7 @@ GameObject:
   - component: {fileID: 382794870}
   - component: {fileID: 382794872}
   - component: {fileID: 382794871}
+  - component: {fileID: 382794873}
   m_Layer: 6
   m_Name: Dragon
   m_TagString: Untagged
@@ -1977,8 +1983,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text:
-  - This is currently the final level
-  - Thank you for playing!
+  - '"Hello, Harry. You may have survivd my trials, but your death draws near, for
+    it is I, Malgos, a Shen with a lust for revenge!"'
+  - '"For, you see, you slaughtered some of my bretherin by blowing their head off
+    after they formed into a demon."'
+  - '"Now, you may be thining, ''who was the body I found?'' But that, my future
+    meal, was a trick, a mirage that showed how you would look after I got my claws
+    on you."'
+  - '"This whole house was a ruse, and you fell for it. And, now, you must die!"'
+  - You approach the Shen and conjure a fireball, blowing its head off just like
+    you did to his friends.
+  - '"God, you were annoying. And what is your obsession with levers?" you say.'
 --- !u!61 &382794872
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2005,6 +2020,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5527675, y: 1.6494644}
   m_EdgeRadius: 0
+--- !u!114 &382794873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382794869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cbc2d5e205286746916076bf05a9652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &389971035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,6 +2082,7 @@ MonoBehaviour:
   staticTime: 1
   pauseMenu: {fileID: 1012597166}
   controlsMenu: {fileID: 1072079187}
+  soundManager: {fileID: 0}
 --- !u!4 &389971037
 Transform:
   m_ObjectHideFlags: 0
