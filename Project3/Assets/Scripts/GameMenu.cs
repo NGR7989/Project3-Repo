@@ -26,6 +26,6 @@ public class GameMenu : MonoBehaviour
     private IEnumerator PlayAfterTime (float time)
     {
         yield return new WaitForSeconds(time);
-        SceneManager.LoadScene("TestMenu");
+        SceneManager.LoadScene("StartMenu");
     }
 }
