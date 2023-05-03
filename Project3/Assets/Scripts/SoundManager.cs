@@ -97,7 +97,10 @@ public class SoundManager : MonoBehaviour
     private IEnumerator ChangeMusicTrackCo(int index)
     {
         yield return FadeSource(musicSource, musicFadeOutTime);
+
+        musicSource.volume = musicVolume;
         musicSource.clip = musicTracks[index];
+        musicSource.Play();
     }
 
     /// <summary>
